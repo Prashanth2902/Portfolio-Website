@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Alex Chen</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Motiva+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .profile-page {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, var(--steam-dark) 0%, var(--steam-darker) 100%);
+            padding: var(--spacing-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--steam-blue) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-sidebar {
+            background: var(--steam-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: var(--spacing-xl);
+        }
+        
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto var(--spacing-lg);
+            background: linear-gradient(135deg, var(--steam-blue), var(--steam-green));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-name {
+            font-size: 24px;
+            text-align: center;
+            color: var(--steam-text);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .profile-title {
+            font-size: 14px;
+            text-align: center;
+            color: var(--steam-blue);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .profile-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(164, 208, 7, 0.1);
+            border: 1px solid var(--steam-green-light);
+            border-radius: 3px;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .profile-badge {
+            width: 40px;
+            height: 40px;
+            background: var(--steam-grey);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-stats {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--spacing-lg);
+        }
+        
+        .profile-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            font-size: 14px;
+        }
+        
+        .profile-stat-label {
+            color: var(--steam-text-dim);
+        }
+        
+        .profile-stat-value {
+            color: var(--steam-text);
+            font-weight: 600;
+        }
+        
+        .profile-main {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+        
+        .profile-section {
+            background: var(--steam-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: var(--spacing-xl);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--steam-blue);
+            margin-bottom: var(--spacing-lg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .about-content {
+            color: var(--steam-text);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .skill-category {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            padding: var(--spacing-md);
+        }
+        
+        .skill-category-title {
+            font-size: 12px;
+            color: var(--steam-green-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .skill-name {
+            font-size: 13px;
+            color: var(--steam-text);
+        }
+        
+        .skill-bar {
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--steam-blue), var(--steam-green-light));
+            border-radius: 2px;
+            transition: width 1s ease;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            padding-left: var(--spacing-xl);
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--steam-blue), transparent);
+        }
+        
+        .experience-item {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--steam-green-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--steam-green-light);
+        }
+        
+        .experience-date {
+            font-size: 12px;
+            color: var(--steam-blue);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .experience-title {
+            font-size: 16px;
+            color: var(--steam-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .experience-company {
+            font-size: 14px;
+            color: var(--steam-text-dim);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .experience-description {
+            font-size: 13px;
+            color: var(--steam-text);
+            line-height: 1.6;
+        }
+        
+        .achievements-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .showcase-achievement {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            padding: var(--spacing-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .showcase-achievement:hover {
+            background: rgba(102, 192, 244, 0.1);
+            border-color: var(--steam-blue);
+            transform: translateY(-3px);
+        }
+        
+        .achievement-emoji {
+            font-size: 32px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .achievement-name {
+            font-size: 12px;
+            color: var(--steam-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .achievement-date {
+            font-size: 10px;
+            color: var(--steam-text-dim);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-sidebar {
+                margin-bottom: var(--spacing-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="steam-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">AC</span>
+                <span class="logo-subtitle">DEVELOPER</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">STORE</a>
+                <a href="projects.html" class="nav-link">LIBRARY</a>
+                <a href="about.html" class="nav-link active">PROFILE</a>
+                <a href="contact.html" class="nav-link">COMMUNITY</a>
+            </div>
+            <div class="nav-user">
+                <span class="status-indicator online"></span>
+                <span class="username">alex.chen</span>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Page -->
+    <div class="profile-page">
+        <div class="profile-header">
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">👨‍💻</div>
+                    <h2 class="profile-name">Alex Chen</h2>
+                    <p class="profile-title">Full Stack Developer</p>
+                    
+                    <div class="profile-status">
+                        <span class="status-indicator online"></span>
+                        <span>Currently Available</span>
+                    </div>
+                    
+                    <div class="profile-badges">
+                        <div class="profile-badge" data-tooltip="JavaScript Expert">🟨</div>
+                        <div class="profile-badge" data-tooltip="React Master">⚛️</div>
+                        <div class="profile-badge" data-tooltip="Node.js Pro">🟢</div>
+                        <div class="profile-badge" data-tooltip="Cloud Architect">☁️</div>
+                        <div class="profile-badge" data-tooltip="Open Source Contributor">🌟</div>
+                        <div class="profile-badge" data-tooltip="Problem Solver">🧩</div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <span class="profile-stat-label">Experience</span>
+                            <span class="profile-stat-value">5+ Years</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat-label">Projects</span>
+                            <span class="profile-stat-value">47</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat-label">Clients</span>
+                            <span class="profile-stat-value">23</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat-label">Commits</span>
+                            <span class="profile-stat-value">12.3K</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="profile-stat-label">Coffee Consumed</span>
+                            <span class="profile-stat-value">∞</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-main">
+                    <!-- About Section -->
+                    <div class="profile-section">
+                        <h3 class="section-title">About Me</h3>
+                        <div class="about-content">
+                            <p>
+                                Hello! I'm Alex Chen, a passionate full-stack developer with a love for creating 
+                                elegant solutions to complex problems. With over 5 years of experience in the tech 
+                                industry, I've had the privilege of working with startups and enterprise clients alike.
+                            </p>
+                            <p>
+                                My journey in programming started with a simple "Hello, World!" and has evolved into 
+                                building scalable applications that serve millions of users. I specialize in JavaScript 
+                                ecosystems, cloud architecture, and creating seamless user experiences.
+                            </p>
+                            <p>
+                                When I'm not coding, you can find me contributing to open-source projects, exploring 
+                                new technologies, or enjoying a good cup of coffee while planning my next big project. 
+                                I believe in writing clean, maintainable code and always strive to stay updated with 
+                                the latest industry trends and best practices.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Section -->
+                    <div class="profile-section">
+                        <h3 class="section-title">Technical Skills</h3>
+                        <div class="skills-container">
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">Frontend</h4>
+                                <div class="skill-item">
+                                    <span class="skill-name">React / Next.js</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">TypeScript</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Vue.js</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">CSS/Tailwind</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">Backend</h4>
+                                <div class="skill-item">
+                                    <span class="skill-name">Node.js</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 93%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Python</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">PostgreSQL</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">MongoDB</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h4 class="skill-category-title">DevOps & Tools</h4>
+                                <div class="skill-item">
+                                    <span class="skill-name">AWS</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Docker</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">CI/CD</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Git</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Section -->
+                    <div class="profile-section">
+                        <h3 class="section-title">Experience</h3>
+                        <div class="experience-timeline">
+                            <div class="experience-item">
+                                <div class="experience-date">2022 - Present</div>
+                                <div class="experience-title">Senior Full Stack Developer</div>
+                                <div class="experience-company">TechCorp Solutions</div>
+                                <div class="experience-description">
+                                    Led development of enterprise cloud solutions, mentored junior developers, 
+                                    and architected scalable microservices handling 1M+ daily requests.
+                                </div>
+                            </div>
+                            
+                            <div class="experience-item">
+                                <div class="experience-date">2020 - 2022</div>
+                                <div class="experience-title">Full Stack Developer</div>
+                                <div class="experience-company">StartupHub Inc.</div>
+                                <div class="experience-description">
+                                    Built and maintained multiple client projects using React and Node.js, 
+                                    implemented CI/CD pipelines, and improved application performance by 40%.
+                                </div>
+                            </div>
+                            
+                            <div class="experience-item">
+                                <div class="experience-date">2019 - 2020</div>
+                                <div class="experience-title">Frontend Developer</div>
+                                <div class="experience-company">Digital Agency Pro</div>
+                                <div class="experience-description">
+                                    Created responsive web applications, collaborated with design teams, 
+                                    and delivered pixel-perfect implementations for major brand campaigns.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Achievements Section -->
+                    <div class="profile-section">
+                        <h3 class="section-title">Achievements</h3>
+                        <div class="achievements-showcase">
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">🏆</div>
+                                <div class="achievement-name">Best Developer</div>
+                                <div class="achievement-date">2023</div>
+                            </div>
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">🚀</div>
+                                <div class="achievement-name">10x Performance</div>
+                                <div class="achievement-date">2022</div>
+                            </div>
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">⭐</div>
+                                <div class="achievement-name">5-Star Rating</div>
+                                <div class="achievement-date">All Time</div>
+                            </div>
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">💡</div>
+                                <div class="achievement-name">Innovation Award</div>
+                                <div class="achievement-date">2023</div>
+                            </div>
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">🌟</div>
+                                <div class="achievement-name">Open Source Hero</div>
+                                <div class="achievement-date">2022</div>
+                            </div>
+                            <div class="showcase-achievement">
+                                <div class="achievement-emoji">📈</div>
+                                <div class="achievement-name">Growth Hacker</div>
+                                <div class="achievement-date">2021</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="steam-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h5>DEVELOPER</h5>
+                <a href="#">Portfolio</a>
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div class="footer-section">
+                <h5>PROJECTS</h5>
+                <a href="#">Web Applications</a>
+                <a href="#">Mobile Apps</a>
+                <a href="#">Open Source</a>
+            </div>
+            <div class="footer-section">
+                <h5>CONTACT</h5>
+                <a href="#">Email</a>
+                <a href="#">Discord</a>
+                <a href="#">Schedule Call</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Alex Chen. All rights reserved. Built with passion and coffee.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/utils.js"></script>
+    <script>
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        const skillsContainer = document.querySelector('.skills-container');
+        if (skillsContainer) {
+            skillObserver.observe(skillsContainer);
+        }
+    </script>
+</body>
+</html>
