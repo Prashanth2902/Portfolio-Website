@@ -1,0 +1,44 @@
+{
+  "name": "steam-portfolio",
+  "version": "1.0.0",
+  "description": "A Steam-inspired developer portfolio website with modern design and interactive features",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080",
+    "dev": "npx live-server --port=8080",
+    "test": "echo \"No tests configured yet\"",
+    "build": "echo \"Static site - no build required\""
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "steam",
+    "gaming",
+    "web-development",
+    "frontend",
+    "javascript",
+    "css3",
+    "html5",
+    "responsive-design"
+  ],
+  "author": "Alex Chen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexchen/steam-portfolio"
+  },
+  "homepage": "https://alexchen.dev",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

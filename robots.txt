@@ -1,0 +1,12 @@
+# Robots.txt for Steam Portfolio
+
+User-agent: *
+Allow: /
+
+# Allow search engines to index all pages
+Disallow: /assets/images/
+Allow: /*.css
+Allow: /*.js
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://yourdomain.com/sitemap.xml
