@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Prashanth Prabhakar</title>
+    <title>Projects - Prashanth Prabhakar | AI/ML, Mobile & Research Projects</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore my portfolio of innovative projects including Healthcare AI Chatbot, Android ToDo App, and WSN Optimization research. Showcasing skills in Python, Android, IoT, and Machine Learning.">
+    <meta name="keywords" content="projects, AI chatbot, android app, IoT research, machine learning, python, keras, tensorflow, mobile development">
+    <meta name="author" content="Prashanth Prabhakar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourportfolio.com/projects.html">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="additional-styles.css">
 </head>
 <body class="has-long-content">
     <!-- Animated Background Particles -->
-    <div class="particles">
+    <div class="particles" aria-hidden="true" role="presentation">
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -21,35 +29,35 @@
     </div>
 
     <div class="container">
-        <a href="index.html" class="back-btn">
-            <span>←</span>
+        <a href="index.html" class="back-btn" aria-label="Navigate back to home profile">
+            <span aria-hidden="true">←</span>
             <span>Back to Profile</span>
         </a>
         
-        <div class="steam-card">
-            <div class="status-bar">
-                <span class="status-dot online"></span>
+        <main class="steam-card" role="main">
+            <div class="status-bar" role="status" aria-label="Page status">
+                <span class="status-dot online" role="img" aria-label="Active section"></span>
                 <span class="status-text">Personal Projects Showcase</span>
             </div>
 
-            <div class="page-header">
-                <h1 class="page-title glitch" data-text="Projects">Projects</h1>
+            <header class="page-header">
+                <h1 class="page-title glitch" data-text="Projects" aria-label="Projects">Projects</h1>
                 <p class="page-subtitle">Innovative solutions and academic research</p>
-            </div>
+            </header>
 
             <!-- Filter Tags -->
-            <div class="project-filters">
-                <span class="filter-tag active">ALL</span>
-                <span class="filter-tag">AI/ML</span>
-                <span class="filter-tag">MOBILE</span>
-                <span class="filter-tag">RESEARCH</span>
-            </div>
+            <nav class="project-filters" role="navigation" aria-label="Project category filters">
+                <button class="filter-tag active" aria-pressed="true" aria-label="Show all projects">ALL</button>
+                <button class="filter-tag" aria-pressed="false" aria-label="Filter AI and ML projects">AI/ML</button>
+                <button class="filter-tag" aria-pressed="false" aria-label="Filter mobile projects">MOBILE</button>
+                <button class="filter-tag" aria-pressed="false" aria-label="Filter research projects">RESEARCH</button>
+            </nav>
             
-            <div class="projects-grid">
+            <section class="projects-grid" aria-label="Project listings">
                 <!-- Healthcare Chatbot Project -->
-                <div class="project-card" data-category="aiml">
+                <article class="project-card" data-category="aiml">
                     <div class="project-header">
-                        <span class="project-icon">🏥</span>
+                        <span class="project-icon" role="img" aria-label="Healthcare icon">🏥</span>
                         <div>
                             <h3 class="project-title">Healthcare Chatbot System</h3>
                             <div class="project-tech">
@@ -60,10 +68,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-stats">
-                        <span class="stat">🤖 AI Assistant</span>
-                        <span class="stat">💬 Natural Language</span>
-                        <span class="stat">⚡ Real-time</span>
+                    <div class="project-stats" aria-label="Project highlights">
+                        <span class="stat"><span role="img" aria-label="Robot">🤖</span> AI Assistant</span>
+                        <span class="stat"><span role="img" aria-label="Speech bubble">💬</span> Natural Language</span>
+                        <span class="stat"><span role="img" aria-label="Lightning">⚡</span> Real-time</span>
                     </div>
                     <p class="project-description">
                         Developed an intelligent chatbot application for hospitals/clinics using deep learning. 
@@ -71,12 +79,43 @@
                         and symptom analysis. Trained on medical datasets with 92% accuracy in intent classification. 
                         Features include multi-turn conversations, context retention, and medical term recognition.
                     </p>
-                </div>
+                </article>
+                
+                <!-- House Price Prediction ML -->
+                <article class="project-card" data-category="aiml">
+                    <div class="project-header">
+                        <span class="project-icon" role="img" aria-label="House icon">🏠</span>
+                        <div>
+                            <h3 class="project-title">House Price Prediction using ML</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Regression</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats" aria-label="Project highlights">
+                        <span class="stat"><span role="img" aria-label="Chart">📊</span> ML Model</span>
+                        <span class="stat"><span role="img" aria-label="Target">🎯</span> Price Prediction</span>
+                        <span class="stat"><span role="img" aria-label="Data">📈</span> Data Analysis</span>
+                    </div>
+                    <p class="project-description">
+                        Built a machine learning model to predict house prices using regression techniques. 
+                        Performed extensive data preprocessing, feature engineering, and exploratory data analysis 
+                        to identify key factors affecting property values. Implemented multiple regression algorithms 
+                        and compared their performance to select the best model. Utilized scikit-learn for model 
+                        training and evaluation with metrics like RMSE and R² score.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/Prashanth2902/Simple-ML-Projects/tree/main/House-Price-Prediction-ML" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View code on GitHub, opens in new tab">VIEW CODE</a>
+                    </div>
+                </article>
                 
                 <!-- ToDo Android Application -->
-                <div class="project-card" data-category="mobile">
+                <article class="project-card" data-category="mobile">
                     <div class="project-header">
-                        <span class="project-icon">📝</span>
+                        <span class="project-icon" role="img" aria-label="Notepad icon">📝</span>
                         <div>
                             <h3 class="project-title">ToDo Task Manager App</h3>
                             <div class="project-tech">
@@ -87,10 +126,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-stats">
-                        <span class="stat">📱 Native Android</span>
-                        <span class="stat">🔄 Sync</span>
-                        <span class="stat">🎨 Material UI</span>
+                    <div class="project-stats" aria-label="Project highlights">
+                        <span class="stat"><span role="img" aria-label="Phone">📱</span> Native Android</span>
+                        <span class="stat"><span role="img" aria-label="Sync">🔄</span> Sync</span>
+                        <span class="stat"><span role="img" aria-label="Art">🎨</span> Material UI</span>
                     </div>
                     <p class="project-description">
                         Built a feature-rich ToDo application with Android Jetpack components. Implemented 
@@ -99,12 +138,12 @@
                         due date reminders, dark mode support, and swipe gestures. Followed MVVM architecture 
                         for clean, maintainable code.
                     </p>
-                </div>
+                </article>
                 
                 <!-- B.Tech Thesis Project -->
-                <div class="project-card" data-category="research">
+                <article class="project-card" data-category="research">
                     <div class="project-header">
-                        <span class="project-icon">📡</span>
+                        <span class="project-icon" role="img" aria-label="Satellite dish icon">📡</span>
                         <div>
                             <h3 class="project-title">2-Level Cluster Optimization for WSN</h3>
                             <div class="project-tech">
@@ -114,10 +153,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-stats">
-                        <span class="stat">🔬 B.Tech Thesis</span>
-                        <span class="stat">📈 20% Improvement</span>
-                        <span class="stat">🏆 NIT Trichy</span>
+                    <div class="project-stats" aria-label="Project highlights">
+                        <span class="stat"><span role="img" aria-label="Microscope">🔬</span> B.Tech Thesis</span>
+                        <span class="stat"><span role="img" aria-label="Chart">📈</span> 20% Improvement</span>
+                        <span class="stat"><span role="img" aria-label="Trophy">🏆</span> NIT Trichy</span>
                     </div>
                     <p class="project-description">
                         Developed a modified GSA-RPI algorithm with hierarchical clustering and meta-heuristic 
@@ -126,13 +165,13 @@
                         to minimize energy consumption and maximize coverage. Published findings demonstrating 
                         superior performance over traditional algorithms.
                     </p>
-                </div>
+                </article>
 
                 <!-- Additional Project Ideas -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-badge new">IN PROGRESS</div>
+                <article class="project-card" data-category="mobile">
+                    <div class="project-badge new" aria-label="Status: In progress">IN PROGRESS</div>
                     <div class="project-header">
-                        <span class="project-icon">🎮</span>
+                        <span class="project-icon" role="img" aria-label="Game controller icon">🎮</span>
                         <div>
                             <h3 class="project-title">More Projects Coming Soon</h3>
                             <div class="project-tech">
@@ -142,33 +181,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-stats">
-                        <span class="stat">🚀 Innovation</span>
-                        <span class="stat">💡 Ideas</span>
-                        <span class="stat">🔮 Future</span>
+                    <div class="project-stats" aria-label="Project highlights">
+                        <span class="stat"><span role="img" aria-label="Rocket">🚀</span> Innovation</span>
+                        <span class="stat"><span role="img" aria-label="Lightbulb">💡</span> Ideas</span>
+                        <span class="stat"><span role="img" aria-label="Crystal ball">🔮</span> Future</span>
                     </div>
                     <p class="project-description">
                         Currently working on several exciting projects including a cross-platform mobile app, 
                         cloud-based solutions, and machine learning experiments. Stay tuned for updates!
                     </p>
-                </div>
-            </div>
-                        <!-- Navigation to other sections -->
-            <div class="section-nav">
-                <a href="experience.html" class="nav-card">
-                    <span class="nav-icon">🚀</span>
+                </article>
+            </section>
+
+            <!-- Navigation to other sections -->
+            <nav class="section-nav" aria-label="Navigate to related sections">
+                <a href="experience.html" class="nav-card" aria-label="Navigate to professional experience section">
+                    <span class="nav-icon" role="img" aria-hidden="true">🚀</span>
                     <span class="nav-text">My Professional Experience →</span>
                 </a>
-            </div>
+            </nav>
 
-            <div class="footer">
-                <div class="steam-logo">⚙️</div>
-                <p>Want to collaborate? <a href="social.html" style="color: var(--steam-green-light);">Let's connect!</a></p>
-            </div>
-        </div>
+            <footer class="footer">
+                <div class="steam-logo" role="img" aria-label="Settings icon">⚙️</div>
+                <p>Want to collaborate? <a href="social.html" style="color: var(--steam-green-light);" aria-label="Navigate to social connections page">Let's connect!</a></p>
+            </footer>
+        </main>
     </div>
 
-        <style>
+    <style>
         /* Timeline Navigation */
         .timeline-nav {
             display: flex;
@@ -239,6 +279,13 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        /* Fix for achievement buttons to work properly */
+        .achievement {
+            background: none;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
         }
     </style>
 

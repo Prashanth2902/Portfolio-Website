@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashanth Prabhakar - Software Engineer</title>
+    <title>Prashanth Prabhakar - Software Engineer | Android & IoT Specialist</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Software Engineer with 3+ years of experience in Android development, IoT, and embedded systems. Currently pursuing MS in Computer Science at Northeastern University. Specialized in high-performance telematics services and scalable mobile applications.">
+    <meta name="keywords" content="software engineer, android developer, IoT, embedded systems, Ola Electric, mobile development, telematics, Northeastern University, Boston">
+    <meta name="author" content="Prashanth Prabhakar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Prashanth Prabhakar - Software Engineer">
+    <meta property="og:description" content="Software Engineer specializing in Android, IoT, and embedded systems with 3+ years of experience at Ola Electric.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourportfolio.com">
+    <meta property="og:image" content="https://yourportfolio.com/preview.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prashanth Prabhakar - Software Engineer">
+    <meta name="twitter:description" content="Software Engineer with 3+ years of experience in Android, IoT, and embedded systems.">
+    <meta name="twitter:image" content="https://yourportfolio.com/preview.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourportfolio.com">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="additional-styles.css">
 </head>
 <body>
     <!-- Animated Background Particles -->
-    <div class="particles">
+    <div class="particles" aria-hidden="true" role="presentation">
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -21,24 +44,24 @@
     </div>
 
     <div class="container">
-        <div class="steam-card">
+        <main class="steam-card" role="main">
             <!-- Steam-like status indicator -->
-            <div class="status-bar">
-                <span class="status-dot online"></span>
+            <div class="status-bar" role="status" aria-label="Employment status">
+                <span class="status-dot online" role="img" aria-label="Available for work"></span>
                 <span class="status-text">Open To Work</span>
             </div>
             
             <!-- Animated Avatar -->
-            <div class="avatar-container">
-                <div class="avatar-glow"></div>
+            <div class="avatar-container" role="img" aria-label="Profile avatar">
+                <div class="avatar-glow" aria-hidden="true"></div>
                 <div class="avatar">
-                    <span class="avatar-emoji">🚀</span>
+                    <span class="avatar-emoji" role="img" aria-label="Rocket emoji">🚀</span>
                 </div>
-                <div class="level-badge">SDE 2</div>
+                <div class="level-badge" aria-label="Current position">SDE 2</div>
             </div>
             
-            <h1 class="name glitch" data-text="Prashanth Prabhakar">Prashanth Prabhakar</h1>
-            <p class="title neon-text">Software Development Engineer</p>
+            <h1 class="name glitch" data-text="Prashanth Prabhakar" aria-label="Prashanth Prabhakar">Prashanth Prabhakar</h1>
+            <p class="title neon-text" role="doc-subtitle">Software Development Engineer</p>
             
             <p class="bio">
                 Software Engineer with 3+ years of experience in Android, IoT, and embedded systems. 
@@ -47,78 +70,88 @@
             </p>
             
             <!-- Animated Stats -->
-            <div class="stats">
+            <section class="stats" aria-label="Professional statistics">
                 <div class="stat-item">
-                    <div class="stat-icon">⚡</div>
-                    <span class="stat-number counter" data-target="3">0</span>
+                    <div class="stat-icon" role="img" aria-label="Lightning icon">⚡</div>
+                    <span class="stat-number counter" data-target="3" aria-label="3 years experience">0</span>
                     <span class="stat-label">Years XP</span>
-                    <div class="stat-bar">
+                    <div class="stat-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Experience level">
                         <div class="stat-fill" style="width: 60%"></div>
                     </div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon">📱</div>
-                    <span class="stat-number counter" data-target="500">0</span>
+                    <div class="stat-icon" role="img" aria-label="Mobile phone icon">📱</div>
+                    <span class="stat-number counter" data-target="500" aria-label="500 thousand plus users">0</span>
                     <span class="stat-label">K+ Users</span>
-                    <div class="stat-bar">
+                    <div class="stat-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="User reach level">
                         <div class="stat-fill" style="width: 100%"></div>
                     </div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon">🎯</div>
-                    <span class="stat-number counter" data-target="50">0</span>
+                    <div class="stat-icon" role="img" aria-label="Target icon">🎯</div>
+                    <span class="stat-number counter" data-target="50" aria-label="50 percent memory optimization">0</span>
                     <span class="stat-label">% Memory Optimized</span>
-                    <div class="stat-bar">
+                    <div class="stat-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Optimization level">
                         <div class="stat-fill" style="width: 85%"></div>
                     </div>
                 </div>
-            </div>
+            </section>
             
             <!-- Achievements Section -->
-            <div class="achievements">
-                <div class="achievement unlocked" title="Android Expert">
-                    <span>🤖</span>
-                </div>
-                <div class="achievement unlocked" title="IoT Developer">
-                    <span>📡</span>
-                </div>
-                <div class="achievement unlocked" title="Performance Optimizer">
-                    <span>⚙️</span>
-                </div>
-                <div class="achievement unlocked" title="Team Leader">
-                    <span>👑</span>
-                </div>
-                <div class="achievement unlocked" title="MS Student">
-                    <span>🎓</span>
-                </div>
-            </div>
+            <section class="achievements" aria-label="Professional achievements">
+                <button class="achievement unlocked" title="Software Developer" aria-label="Achievement: Software Developer">
+                    <span role="img" aria-hidden="true">🤖</span>
+                </button>
+                <button class="achievement unlocked" title="IoT Developer" aria-label="Achievement: IoT Developer">
+                    <span role="img" aria-hidden="true">📡</span>
+                </button>
+                <button class="achievement unlocked" title="Performance Optimizer" aria-label="Achievement: Performance Optimizer">
+                    <span role="img" aria-hidden="true">⚙️</span>
+                </button>
+                <button class="achievement unlocked" title="Team Leader" aria-label="Achievement: Team Leader">
+                    <span role="img" aria-hidden="true">👑</span>
+                </button>
+                <button class="achievement unlocked" title="MS Student" aria-label="Achievement: Master's Student">
+                    <span role="img" aria-hidden="true">🎓</span>
+                </button>
+            </section>
             
             <!-- Steam-style Buttons -->
-            <div class="buttons">
-                <a href="experience.html" class="btn btn-primary steam-btn">
-                    <span class="btn-shine"></span>
-                    <span class="btn-icon">💼</span>
+            <nav class="buttons" aria-label="Main navigation">
+                <a href="experience.html" class="btn btn-primary steam-btn" aria-label="View professional experience - 3 plus years">
+                    <span class="btn-shine" aria-hidden="true"></span>
+                    <span class="btn-icon" role="img" aria-hidden="true">💼</span>
                     <span class="btn-text">Experience</span>
-                    <span class="btn-badge">3+</span>
+                    <span class="btn-badge" aria-label="3 plus years">3+</span>
                 </a>
-                <a href="projects.html" class="btn btn-secondary steam-btn">
-                    <span class="btn-shine"></span>
-                    <span class="btn-icon">🚀</span>
+                <a href="projects.html" class="btn btn-secondary steam-btn" aria-label="View projects - new content available">
+                    <span class="btn-shine" aria-hidden="true"></span>
+                    <span class="btn-icon" role="img" aria-hidden="true">🚀</span>
                     <span class="btn-text">Projects</span>
-                    <span class="btn-badge">NEW</span>
+                    <span class="btn-badge" aria-label="New content">NEW</span>
                 </a>
-            </div>
+            </nav>
+
+            <!-- Resume Download Button -->
+            <nav class="buttons" style="margin-top: 15px;" aria-label="Resume download">
+                <a href="https://drive.google.com/uc?export=download&id=1THuOYgeP8Kt6ZxRc21vCkgPWNvlXniCh" class="btn btn-resume steam-btn" aria-label="Download resume PDF">
+                    <span class="btn-shine" aria-hidden="true"></span>
+                    <span class="btn-icon" role="img" aria-hidden="true">📄</span>
+                    <span class="btn-text">Download Resume</span>
+                    <span class="btn-badge" aria-label="PDF document">PDF</span>
+                </a>
+            </nav>
 
             <!-- Additional Navigation -->
-            <div class="buttons" style="margin-top: 15px;">
-                <a href="social.html" class="btn btn-secondary steam-btn">
-                    <span class="btn-shine"></span>
-                    <span class="btn-icon">🔗</span>
+            <nav class="buttons" style="margin-top: 15px;" aria-label="Secondary navigation">
+                <a href="social.html" class="btn btn-secondary steam-btn" aria-label="Connect on social platforms - 5 plus networks">
+                    <span class="btn-shine" aria-hidden="true"></span>
+                    <span class="btn-icon" role="img" aria-hidden="true">🔗</span>
                     <span class="btn-text">Connect</span>
-                    <span class="btn-badge">5+</span>
+                    <span class="btn-badge" aria-label="5 plus social networks">5+</span>
                 </a>
-            </div>
-        </div>
+            </nav>
+        </main>
     </div>
 
     <script src="script.js"></script>

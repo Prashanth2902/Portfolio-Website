@@ -1,7 +1,30 @@
 // Steam Portfolio JavaScript - Game-like animations and interactions
 
+// Performance-optimized IntersectionObserver for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            // Optionally unobserve after animation to improve performance
+            animationObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Observe elements for scroll-based animations
+    const observableElements = document.querySelectorAll('.project-card, .social-link, .stat-item');
+    observableElements.forEach(el => {
+        el.classList.add('observe-animate');
+        animationObserver.observe(el);
+    });
     
     // Counter Animation for Stats
     const counters = document.querySelectorAll('.counter');
@@ -57,19 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animate social links on load (Social page)
-    if (window.location.pathname.includes('social.html')) {
-        const links = document.querySelectorAll('.social-link');
-        links.forEach((link, index) => {
-            link.style.opacity = '0';
-            link.style.transform = 'translateX(-50px)';
-            setTimeout(() => {
-                link.style.transition = 'all 0.5s ease';
-                link.style.opacity = '1';
-                link.style.transform = 'translateX(0)';
-            }, index * 100);
-        });
-    }
+    // Social links are now handled by IntersectionObserver for better performance
 
     // Glitch effect on all page titles
     const pageTitles = document.querySelectorAll('.page-title.glitch');
@@ -138,14 +149,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add parallax effect to particles
+    // Add parallax effect to particles with throttling for better performance
+    let ticking = false;
     document.addEventListener('mousemove', function(e) {
-        const particles = document.querySelector('.particles');
-        if (particles) {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            particles.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const particles = document.querySelector('.particles');
+                if (particles) {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    particles.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 

@@ -1,5 +1,72 @@
 /* Additional Steam Portfolio Styles - Page Specific */
 
+/* Force scrollbar to always show */
+html {
+    overflow-y: scroll;
+}
+
+/* Performance-optimized IntersectionObserver animations */
+.observe-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.observe-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation for multiple elements */
+.social-link.observe-animate {
+    transform: translateX(-50px);
+}
+
+.social-link.observe-animate.animate-in {
+    transform: translateX(0);
+}
+
+/* Button resets for accessibility improvements */
+.filter-tag,
+.timeline-dot {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.filter-tag:focus,
+.timeline-dot:focus,
+.achievement:focus {
+    outline: 2px solid var(--steam-blue);
+    outline-offset: 2px;
+}
+
+/* Ensure filter and timeline buttons work like the original spans */
+.filter-tag {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--steam-text-dim);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-dot {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--steam-text-dim);
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
 /* Fix scrolling for longer content pages */
 body.has-long-content {
     min-height: 100vh;
@@ -7,7 +74,7 @@ body.has-long-content {
     align-items: flex-start !important;
     padding-top: 40px;
     padding-bottom: 40px;
-    overflow-y: auto !important;
+    overflow-y: visible !important; /* Let html handle scrolling */
 }
 
 body.has-long-content .container {
@@ -33,12 +100,13 @@ html {
     scroll-behavior: smooth;
     min-height: 100%;
     height: auto;
+    overflow-y: scroll; /* Only scrollbar here */
 }
 
 body {
     position: relative;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible; /* No scrollbar on body */
 }
 
 /* Fix for mobile scrolling */
@@ -59,10 +127,11 @@ body {
     z-index: 10;
 }
 
-/* Properly contain the rotating background effect */
+/* Properly contain the background effect and prevent overflow */
 .steam-card {
-    /* Remove the contain property if it causes issues */
     contain: none !important;
+    position: relative;
+    overflow: hidden; /* Prevent pseudo-element overflow */
 }
 
 /* Ensure particles stay fixed and don't block scrolling */

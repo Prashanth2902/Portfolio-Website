@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect - Prashanth Prabhakar</title>
+    <title>Connect - Prashanth Prabhakar | Get in Touch</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Connect with Prashanth Prabhakar. Available via email, phone, LinkedIn, and GitHub. Open to opportunities in software engineering, Android development, and IoT solutions. Based in Boston, MA.">
+    <meta name="keywords" content="contact, email, LinkedIn, GitHub, software engineer, Android developer, Boston, Northeastern University">
+    <meta name="author" content="Prashanth Prabhakar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourportfolio.com/social.html">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="additional-styles.css">
 </head>
 <body class="has-long-content">
     <!-- Animated Background Particles -->
-    <div class="particles">
+    <div class="particles" aria-hidden="true" role="presentation">
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -21,72 +29,72 @@
     </div>
 
     <div class="container">
-        <a href="index.html" class="back-btn">
-            <span>←</span>
+        <a href="index.html" class="back-btn" aria-label="Navigate back to home profile">
+            <span aria-hidden="true">←</span>
             <span>Back to Profile</span>
         </a>
         
-        <div class="steam-card">
-            <div class="status-bar">
-                <span class="status-dot online"></span>
+        <main class="steam-card" role="main">
+            <div class="status-bar" role="status" aria-label="Page status">
+                <span class="status-dot online" role="img" aria-label="Active section"></span>
                 <span class="status-text">Professional Network</span>
             </div>
 
-            <div class="page-header">
-                <h1 class="page-title glitch" data-text="Connect">Connect</h1>
+            <header class="page-header">
+                <h1 class="page-title glitch" data-text="Connect" aria-label="Connect with me">Connect</h1>
                 <p class="page-subtitle">Let's build something amazing together</p>
-            </div>
+            </header>
             
-            <div class="social-grid">
-                <a href="mailto:cbeprashanth@gmail.com" class="social-link">
-                    <span class="social-icon">📧</span>
+            <section class="social-grid" aria-label="Contact and social media links">
+                <a href="mailto:cbeprashanth@gmail.com" class="social-link" aria-label="Send email to cbeprashanth at gmail dot com">
+                    <span class="social-icon" role="img" aria-hidden="true">📧</span>
                     <div class="social-info">
                         <span class="social-name">Email</span>
                         <span class="social-username">cbeprashanth@gmail.com</span>
                     </div>
-                    <span class="steam-arrow">→</span>
+                    <span class="steam-arrow" aria-hidden="true">→</span>
                 </a>
                 
-                <a href="tel:+18573515600" class="social-link">
-                    <span class="social-icon">📱</span>
+                <a href="tel:+18573515600" class="social-link" aria-label="Call phone number plus 1 857 351 5600">
+                    <span class="social-icon" role="img" aria-hidden="true">📱</span>
                     <div class="social-info">
                         <span class="social-name">Phone</span>
                         <span class="social-username">+1 (857) 351-5600</span>
                     </div>
-                    <span class="steam-arrow">→</span>
+                    <span class="steam-arrow" aria-hidden="true">→</span>
                 </a>
                 
-                <a href="https://www.linkedin.com/in/ppprashanth" target="_blank" class="social-link">
-                    <span class="social-icon">💼</span>
+                <a href="https://www.linkedin.com/in/ppprashanth" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visit LinkedIn profile, opens in new tab">
+                    <span class="social-icon" role="img" aria-hidden="true">💼</span>
                     <div class="social-info">
                         <span class="social-name">LinkedIn</span>
                         <span class="social-username">Prashanth Prabhakar</span>
                     </div>
-                    <span class="steam-arrow">→</span>
+                    <span class="steam-arrow" aria-hidden="true">→</span>
                 </a>
                 
-                <a href="https://github.com/Prashanth2902" target="_blank" class="social-link">
-                    <span class="social-icon">🐙</span>
+                <a href="https://github.com/Prashanth2902" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visit GitHub profile, opens in new tab">
+                    <span class="social-icon" role="img" aria-hidden="true">🐙</span>
                     <div class="social-info">
                         <span class="social-name">GitHub</span>
                         <span class="social-username">View My Code</span>
                     </div>
-                    <span class="steam-arrow">→</span>
+                    <span class="steam-arrow" aria-hidden="true">→</span>
                 </a>
 
-            </div>
+            </section>
             
             <!-- Achievement Unlocked Animation -->
-            <div class="achievement-notification">
-                <span class="achievement-icon">🏆</span>
+            <div class="achievement-notification" role="status" aria-live="polite">
+                <span class="achievement-icon" role="img" aria-label="Trophy">🏆</span>
                 <span>Achievement: Network Professional</span>
             </div>
             
-            <div class="footer">
-                <div class="steam-logo">⚙️</div>
+            <footer class="footer">
+                <div class="steam-logo" role="img" aria-label="Settings icon">⚙️</div>
                 <p>Currently in Boston, MA | Open to opportunities!</p>
-            </div>
-        </div>
+            </footer>
+        </main>
     </div>
 
     <script src="script.js"></script>

@@ -36,7 +36,7 @@ body {
     padding: 20px;
     position: relative;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible; /* Let html handle scrolling */
 }
 
 /* Animated Background Particles */
@@ -112,15 +112,17 @@ body {
 .steam-card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, var(--steam-blue) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, var(--steam-blue) 0%, transparent 70%);
     opacity: 0.05;
-    animation: rotate 30s linear infinite;
+    animation: rotate-glow 30s linear infinite;
     pointer-events: none;
     z-index: 0;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* Ensure content is above the rotating background */
@@ -129,9 +131,10 @@ body {
     z-index: 1;
 }
 
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes rotate-glow {
+    0% { opacity: 0.03; }
+    50% { opacity: 0.05; }
+    100% { opacity: 0.03; }
 }
 
 @keyframes card-entrance {
@@ -425,6 +428,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    padding: 0;
+    font-family: inherit;
 }
 
 .achievement.unlocked {
@@ -526,6 +531,17 @@ body {
     color: var(--steam-darkest);
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(102, 192, 244, 0.5);
+}
+
+.btn-resume {
+    background: linear-gradient(135deg, #b366ff 0%, #8b3dff 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 61, 255, 0.3);
+}
+
+.btn-resume:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(139, 61, 255, 0.5);
 }
 
 .btn-icon {
@@ -746,6 +762,7 @@ body {
     font-size: 13px;
     line-height: 1.6;
     margin-bottom: 15px;
+    text-align: left;
 }
 
 .project-links {
