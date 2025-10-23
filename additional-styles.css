@@ -1,0 +1,343 @@
+/* Additional Steam Portfolio Styles - Page Specific */
+
+/* Fix scrolling for longer content pages */
+body.has-long-content {
+    min-height: 100vh;
+    height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow-y: auto !important;
+}
+
+body.has-long-content .container {
+    margin-top: 0;
+    margin-bottom: 20px;
+    height: auto !important;
+}
+
+body.has-long-content .steam-card {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* Ensure projects grid can expand */
+.projects-grid {
+    max-height: none;
+    overflow: visible;
+}
+
+/* Ensure background covers full scrollable area */
+html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    height: auto;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Fix for mobile scrolling */
+@media (max-width: 768px) {
+    body.has-long-content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    body.has-long-content .container {
+        max-width: 95%;
+    }
+}
+
+/* Ensure back button stays accessible */
+.back-btn {
+    position: relative;
+    z-index: 10;
+}
+
+/* Properly contain the rotating background effect */
+.steam-card {
+    /* Remove the contain property if it causes issues */
+    contain: none !important;
+}
+
+/* Ensure particles stay fixed and don't block scrolling */
+.has-long-content .particles {
+    position: fixed !important;
+    pointer-events: none !important;
+}
+
+/* Create a mask for the rotating background */
+.steam-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Social Page Specific Styles */
+.steam-arrow {
+    color: var(--steam-green-light);
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .steam-arrow {
+    transform: translateX(5px);
+}
+
+.achievement-notification {
+    background: linear-gradient(135deg, var(--steam-green), var(--steam-green-light));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: achievement-unlock 0.6s ease;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes achievement-unlock {
+    0% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+/* Projects Page Specific Styles */
+.project-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.filter-tag {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--steam-text-dim);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-tag:hover,
+.filter-tag.active {
+    background: var(--steam-blue);
+    color: white;
+    border-color: var(--steam-blue);
+    transform: scale(1.05);
+}
+
+.project-card {
+    position: relative;
+    animation: card-appear 0.5s ease both;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.project-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    animation: badge-glow 2s ease-in-out infinite;
+}
+
+.project-badge.new {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: white;
+}
+
+.project-badge.featured {
+    background: linear-gradient(135deg, var(--steam-green), var(--steam-green-light));
+    color: white;
+}
+
+.project-badge.hot {
+    background: linear-gradient(135deg, #ff6b6b, #ff4444);
+    color: white;
+}
+
+.project-badge.epic {
+    background: linear-gradient(135deg, #b366ff, #8b3dff);
+    color: white;
+}
+
+@keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 5px currentColor; }
+    50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+}
+
+.project-stats {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    font-size: 11px;
+    color: var(--steam-text-dim);
+}
+
+.project-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.project-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.project-link:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Click Ripple Effect */
+.click-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: ripple 0.6s ease;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Easter Egg Notification */
+.easter-egg-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    animation: rainbow-gradient 3s ease infinite, achievement-unlock 0.6s ease;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes rainbow-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Rainbow Mode (Easter Egg) */
+.rainbow-mode {
+    animation: rainbow-bg 3s linear infinite;
+}
+
+@keyframes rainbow-bg {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Loading Transition */
+body {
+    transition: opacity 0.3s ease;
+}
+
+/* Improved Button Styles */
+.steam-btn,
+.project-link,
+.back-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 768px) {
+    .project-filters {
+        flex-wrap: wrap;
+    }
+    
+    .filter-tag {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+    
+    .project-badge {
+        padding: 2px 6px;
+        font-size: 9px;
+    }
+    
+    .project-stats {
+        font-size: 10px;
+        gap: 10px;
+    }
+}

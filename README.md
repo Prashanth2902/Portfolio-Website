@@ -1,171 +1,136 @@
-# Steam-Inspired Developer Portfolio
+# Prashanth Prabhakar - Portfolio Website
 
-A modern, interactive developer portfolio website inspired by the Steam gaming platform design. This portfolio showcases projects, skills, and professional experience with a unique gaming-themed aesthetic.
+A Steam-inspired gaming portfolio website showcasing my experience as a Software Development Engineer with 3+ years of expertise in Android, IoT, and embedded systems.
 
-## 🎮 Features
+## 🎮 Live Features
 
-- **Steam-like UI/UX**: Dark theme with signature Steam colors and design patterns
-- **Responsive Design**: Fully responsive across all devices
-- **Interactive Elements**: Smooth animations and hover effects
-- **Project Showcase**: Dynamic project grid with filtering and sorting
-- **Profile System**: Detailed developer profile with skills and achievements
-- **Contact Form**: Integrated contact system with form validation
-- **Community Section**: Testimonials and FAQ accordion
+- **Professional Experience** - Dedicated page for work experience at Ola Electric, Ford Motor
+- **Personal Projects** - Separate showcase for academic and personal projects
+- **Education Journey** - MS at Northeastern University, B.Tech from NIT Trichy
+- **Technical Skills** - Android, IoT, AOSP, Full Stack Development
+- **Steam Gaming Theme** - Dark theme with game-like animations
+- **Contact Integration** - Direct email, phone, and LinkedIn connections
 
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
-Portfolio/
-├── index.html              # Main landing page
-├── pages/
-│   ├── projects.html      # Project library/portfolio
-│   ├── about.html         # Developer profile page
-│   └── contact.html       # Contact and community page
-├── css/
-│   ├── main.css          # Core styles and layout
-│   ├── components.css    # Reusable component styles
-│   └── animations.css    # Animation definitions
-├── js/
-│   ├── main.js           # Core functionality
-│   ├── projects.js       # Project management
-│   └── utils.js          # Utility functions
-└── assets/
-    └── images/           # Image assets (placeholder)
+simple-site/
+├── index.html            # Main intro page with professional summary
+├── experience.html       # Professional work experience & education
+├── projects.html         # Personal & academic projects showcase
+├── social.html           # Professional contact links
+├── style.css             # Main Steam-themed styles
+├── additional-styles.css # Page-specific styles
+├── script.js             # Animations and interactions
+└── README.md             # This file
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-1. **Clone or download** the project files
-2. **Open** `index.html` in your web browser
-3. **Navigate** through the different sections using the navigation bar
+1. **Open the website**: Simply open `index.html` in any web browser
+2. **Navigate**: Click the animated buttons to explore
+3. **Experience**: View professional journey and roles
+4. **Projects**: Explore personal and academic projects
+5. **Contact**: All contact links are active and functional
 
-### Local Development
+## 💼 Professional Experience
 
-For the best development experience, use a local web server:
+### Current Role
+- **Software Development Engineer 2** at Ola Electric (Sept 2024 - Present)
+  - Led development for 500K+ scooters
+  - Optimized memory usage by 50%
+  - Reduced ANR rate by ~20%
 
-```bash
-# Using Python
-python -m http.server 8000
+### Previous Roles
+- **Software Development Engineer 1** at Ola Electric (June 2022 - Sept 2024)
+- **Summer Intern** at Ford Motor (May - July 2021)
 
-# Using Node.js (install http-server globally first)
-npx http-server
+## 🚀 Featured Projects
 
-# Using VS Code Live Server extension
-# Right-click on index.html and select "Open with Live Server"
-```
+### Academic & Personal Projects
+1. **Healthcare Chatbot System**
+   - Python, Keras, TensorFlow
+   - NLP for medical queries with 92% accuracy
+   
+2. **ToDo Android Application**
+   - Kotlin, Room DB, MVVM Architecture
+   - Feature-rich task management with Material UI
+   
+3. **2-Level Cluster Optimization (B.Tech Thesis)**
+   - Wireless Sensor Networks optimization
+   - Extended network lifetime by ~20%
+   - Modified GSA-RPI algorithm
 
-## 🎨 Customization
+## 🎓 Education
 
-### Changing Colors
+- **MS Computer Science** - Northeastern University, Boston (Current)
+- **B.Tech Computer Science** - NIT Tiruchirappalli (2018-2022)
 
-Edit the CSS variables in `css/main.css`:
+## 💻 Technical Skills
 
-```css
-:root {
-    --steam-dark: #1b2838;
-    --steam-blue: #66c0f4;
-    --steam-green: #4c9e00;
-    /* ... other colors */
-}
-```
+### Languages
+Java, Kotlin, Python, C/C++, SQL, JavaScript, HTML/CSS
 
-### Adding Projects
+### Mobile & Android
+Android Jetpack, Retrofit, Coroutines, Hilt/Dagger, AOSP, LeakCanary
 
-Edit the `projectsData` array in `js/projects.js`:
+### Frameworks
+Flask, Django, Express.js, Node.js, React.js, gRPC
 
-```javascript
-const projectsData = [
-    {
-        id: 1,
-        title: "Your Project",
-        category: "web",
-        tags: ["React", "Node.js"],
-        description: "Project description",
-        // ... other properties
-    }
-];
-```
+### Tools
+Android Studio, Git, Gradle, Android Profiler, Perfetto, Jira, Figma
 
-### Updating Personal Information
+## 🎨 Steam Gaming Features
 
-1. Edit the hero section in `index.html`
-2. Update profile details in `pages/about.html`
-3. Modify contact information in `pages/contact.html`
+- **Animated Particles** - Floating background effects
+- **Achievement Badges** - Unlocked skills and certifications
+- **Progress Bars** - Visual expertise levels
+- **Glitch Effects** - Cyberpunk-style text animations
+- **Timeline Navigation** - Interactive career journey
+- **Project Filters** - Category-based filtering
 
-## 💻 Technologies Used
+## 📱 Contact Information
 
-- **HTML5**: Semantic markup
-- **CSS3**: Custom properties, Grid, Flexbox, Animations
-- **JavaScript**: ES6+, DOM manipulation
-- **Design**: Steam-inspired UI/UX
+- **Email**: cbeprashanth@gmail.com
+- **Phone**: +1 (857) 351-5600
+- **LinkedIn**: [Connect on LinkedIn](https://linkedin.com)
+- **Location**: Boston, Massachusetts
 
-## 🌟 Features in Detail
+## 🌐 Deployment
 
-### Navigation System
-- Sticky navigation bar
-- Active page highlighting
-- Smooth scroll animations
-- User status indicator
+To deploy online:
+1. Upload all files to your web host
+2. Ensure all files are in the same directory
+3. Access via `index.html`
 
-### Project Showcase
-- Dynamic filtering by category
-- Sort by date, rating, or price
-- Quick view modal
-- Project cards with hover effects
+### Recommended Platforms:
+- GitHub Pages (Free hosting)
+- Netlify (Easy deployment)
+- Vercel (Modern hosting)
 
-### Profile Page
-- Animated skill bars
-- Experience timeline
-- Achievement badges
-- Statistics display
+## 💡 Page Navigation
 
-### Contact System
-- Form validation
-- Response time indicator
-- Social media links
-- FAQ accordion
+- **Home** (`index.html`) - Introduction and overview
+- **Experience** (`experience.html`) - Professional journey
+- **Projects** (`projects.html`) - Personal projects showcase
+- **Connect** (`social.html`) - Contact information
 
-## 📱 Browser Compatibility
+## 🔧 Technologies Used
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+- HTML5 & CSS3
+- JavaScript (ES6+)
+- Steam-inspired design system
+- Responsive mobile-first approach
+- Performance-optimized animations
 
-## 🔧 Performance Optimizations
+## 📈 Open to Opportunities
 
-- Lazy loading for images
-- Debounced scroll events
-- CSS animations using transform
-- Minimized reflows and repaints
-
-## 📄 License
-
-This project is available for personal and commercial use. Feel free to customize and use it for your own portfolio.
-
-## 🤝 Contributing
-
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
-
-## 👨‍💻 Author
-
-**Alex Chen** (Portfolio Template)
-- Full Stack Developer
-- 5+ Years Experience
-- Specializing in modern web technologies
-
-## 🎮 Steam Design Credits
-
-This portfolio design is inspired by the Steam platform by Valve Corporation. All design choices are transformative and for educational/portfolio purposes.
-
-## 📞 Contact
-
-- Email: alex.chen@example.com
-- Discord: alexchen#1234
-- GitHub: [github.com/alexchen](#)
-- LinkedIn: [linkedin.com/in/alexchen](#)
+Currently pursuing MS in Computer Science at Northeastern University and open to:
+- Software Engineering roles
+- Android Development positions
+- Full Stack opportunities
+- Summer 2025 Internships
 
 ---
 
-Built with 💚 and ☕ using Steam-inspired design principles
+**Built with passion for technology and gaming aesthetics** 🎮 | Boston, MA
