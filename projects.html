@@ -168,6 +168,80 @@
         </div>
     </div>
 
+        <style>
+        /* Timeline Navigation */
+        .timeline-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .timeline-dot {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--steam-text-dim);
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dot.active,
+        .timeline-dot:hover {
+            background: var(--steam-blue);
+            color: white;
+            border-color: var(--steam-blue);
+            transform: scale(1.1);
+        }
+
+        .timeline-line {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--steam-blue), var(--steam-green));
+            margin: 0 10px;
+        }
+
+        /* Section Navigation Card */
+        .section-nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-card {
+            background: rgba(102, 192, 244, 0.1);
+            border: 1px solid var(--steam-blue);
+            border-radius: 8px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--steam-text);
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateX(5px);
+            background: rgba(102, 192, 244, 0.2);
+            box-shadow: 0 0 20px rgba(102, 192, 244, 0.3);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-text {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+
     <script src="script.js"></script>
 </body>
 </html>
