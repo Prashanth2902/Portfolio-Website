@@ -156,6 +156,53 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 20px;
+}
+
+/* Internship Banner */
+.internship-banner {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 140, 0, 0.15));
+    border: 2px solid rgba(255, 140, 0, 0.6);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: banner-pulse 3s ease-in-out infinite;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+}
+
+.banner-icon {
+    font-size: 20px;
+    animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.banner-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffa500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+}
+
+@keyframes banner-pulse {
+    0%, 100% {
+        border-color: rgba(255, 140, 0, 0.6);
+        box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+    }
+    50% {
+        border-color: rgba(255, 140, 0, 0.9);
+        box-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+    }
+}
+
+@keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
 }
 
 .status-dot {
@@ -855,5 +902,20 @@ body {
         width: 40px;
         height: 40px;
         font-size: 20px;
+    }
+    
+    .internship-banner {
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .banner-text {
+        font-size: 11px;
+        letter-spacing: 0.8px;
+    }
+    
+    .banner-icon {
+        font-size: 16px;
     }
 }
