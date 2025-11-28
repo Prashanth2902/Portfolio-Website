@@ -1,327 +1,4 @@
-/* Additional Steam Portfolio Styles - Page Specific */
-
-/* Force scrollbar to always show */
-html {
-    overflow-y: scroll;
-}
-
-/* Performance-optimized IntersectionObserver animations */
-.observe-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.observe-animate.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Staggered animation for multiple elements */
-.social-link.observe-animate {
-    transform: translateX(-50px);
-}
-
-.social-link.observe-animate.animate-in {
-    transform: translateX(0);
-}
-
-/* Button resets for accessibility improvements */
-.filter-tag,
-.timeline-dot {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.filter-tag:focus,
-.timeline-dot:focus,
-.achievement:focus {
-    outline: 2px solid var(--steam-blue);
-    outline-offset: 2px;
-}
-
-/* Ensure filter and timeline buttons work like the original spans */
-.filter-tag {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    color: var(--steam-text-dim);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.timeline-dot {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    color: var(--steam-text-dim);
-    font-size: 11px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-/* Fix scrolling for longer content pages */
-body.has-long-content {
-    min-height: 100vh;
-    height: auto !important;
-    align-items: flex-start !important;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    overflow-y: visible !important; /* Let html handle scrolling */
-}
-
-body.has-long-content .container {
-    margin-top: 0;
-    margin-bottom: 20px;
-    height: auto !important;
-}
-
-body.has-long-content .steam-card {
-    max-height: none !important;
-    height: auto !important;
-    overflow: visible !important;
-}
-
-/* Ensure projects grid can expand */
-.projects-grid {
-    max-height: none;
-    overflow: visible;
-}
-
-/* Ensure background covers full scrollable area */
-html {
-    scroll-behavior: smooth;
-    min-height: 100%;
-    height: auto;
-    overflow-y: scroll; /* Only scrollbar here */
-}
-
-body {
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: visible; /* No scrollbar on body */
-}
-
-/* Fix for mobile scrolling */
-@media (max-width: 768px) {
-    body.has-long-content {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    
-    body.has-long-content .container {
-        max-width: 95%;
-    }
-}
-
-/* Ensure back button stays accessible */
-.back-btn {
-    position: relative;
-    z-index: 10;
-}
-
-/* Properly contain the background effect and prevent overflow */
-.steam-card {
-    contain: none !important;
-    position: relative;
-    overflow: hidden; /* Prevent pseudo-element overflow */
-}
-
-/* Ensure particles stay fixed and don't block scrolling */
-.has-long-content .particles {
-    position: fixed !important;
-    pointer-events: none !important;
-}
-
-/* Create a mask for the rotating background */
-.steam-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Social Page Specific Styles */
-.steam-arrow {
-    color: var(--steam-green-light);
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.social-link:hover .steam-arrow {
-    transform: translateX(5px);
-}
-
-.achievement-notification {
-    background: linear-gradient(135deg, var(--steam-green), var(--steam-green-light));
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    animation: achievement-unlock 0.6s ease;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-@keyframes achievement-unlock {
-    0% {
-        transform: scale(0) rotate(180deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.1) rotate(5deg);
-    }
-    100% {
-        transform: scale(1) rotate(0);
-        opacity: 1;
-    }
-}
-
-/* Projects Page Specific Styles */
-.project-filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-    justify-content: center;
-}
-
-.filter-tag {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    color: var(--steam-text-dim);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-tag:hover,
-.filter-tag.active {
-    background: var(--steam-blue);
-    color: white;
-    border-color: var(--steam-blue);
-    transform: scale(1.05);
-}
-
-.project-card {
-    position: relative;
-    animation: card-appear 0.5s ease both;
-}
-
-.project-card:nth-child(1) { animation-delay: 0.1s; }
-.project-card:nth-child(2) { animation-delay: 0.2s; }
-.project-card:nth-child(3) { animation-delay: 0.3s; }
-.project-card:nth-child(4) { animation-delay: 0.4s; }
-.project-card:nth-child(5) { animation-delay: 0.5s; }
-.project-card:nth-child(6) { animation-delay: 0.6s; }
-
-@keyframes card-appear {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.project-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 4px 10px;
-    border-radius: 3px;
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    z-index: 10;
-    animation: badge-glow 2s ease-in-out infinite;
-}
-
-.project-badge.new {
-    background: linear-gradient(135deg, #00d4ff, #0099cc);
-    color: white;
-}
-
-.project-badge.featured {
-    background: linear-gradient(135deg, var(--steam-green), var(--steam-green-light));
-    color: white;
-}
-
-.project-badge.hot {
-    background: linear-gradient(135deg, #ff6b6b, #ff4444);
-    color: white;
-}
-
-.project-badge.epic {
-    background: linear-gradient(135deg, #b366ff, #8b3dff);
-    color: white;
-}
-
-@keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 5px currentColor; }
-    50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
-}
-
-.project-stats {
-    display: flex;
-    gap: 15px;
-    margin: 15px 0;
-    font-size: 11px;
-    color: var(--steam-text-dim);
-}
-
-.project-stats .stat {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.project-link {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-link::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.5s ease, height 0.5s ease;
-}
-
-.project-link:hover::before {
-    width: 300px;
-    height: 300px;
-}
+/* Additional Steam Portfolio Styles - Single Page Version */
 
 /* Click Ripple Effect */
 .click-ripple {
@@ -360,10 +37,28 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
+.achievement-icon {
+    font-size: 32px;
+}
+
 @keyframes rainbow-gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+@keyframes achievement-unlock {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0);
+        opacity: 1;
+    }
 }
 
 /* Rainbow Mode (Easter Egg) */
@@ -376,37 +71,395 @@ body {
     100% { filter: hue-rotate(360deg); }
 }
 
-/* Loading Transition */
-body {
-    transition: opacity 0.3s ease;
+/* Scroll progress indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--steam-blue), var(--steam-green-light));
+    z-index: 9999;
+    transition: width 0.2s ease;
 }
 
-/* Improved Button Styles */
+/* Section transition effects */
+.section-card {
+    opacity: 0;
+    animation: section-fade-in 0.8s ease forwards;
+}
+
+.section-card:nth-child(1) { animation-delay: 0.1s; }
+.section-card:nth-child(2) { animation-delay: 0.2s; }
+.section-card:nth-child(3) { animation-delay: 0.3s; }
+.section-card:nth-child(4) { animation-delay: 0.4s; }
+.section-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes section-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus states for better accessibility */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--steam-blue);
+    outline-offset: 2px;
+}
+
+/* Better button styling for accessibility */
+.filter-tag,
+.achievement {
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Improved mobile navigation */
+@media (max-width: 768px) {
+    .floating-nav {
+        flex-direction: row;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 20px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        gap: 5px;
+        width: auto;
+        max-width: 90vw;
+    }
+
+    .nav-link {
+        padding: 8px;
+        border-radius: 50%;
+    }
+
+    .nav-link::before {
+        display: none;
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 2px;
+        background: var(--steam-blue);
+        border-radius: 2px;
+    }
+
+    body {
+        padding-left: 20px;
+        padding-bottom: 100px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .floating-nav,
+    .particles,
+    .status-bar,
+    .internship-banner,
+    .achievements,
+    .project-filters,
+    .steam-arrow {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+        padding-left: 0;
+    }
+
+    .steam-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: underline;
+        color: black;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .particles {
+        display: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .steam-card {
+        border: 2px solid white;
+    }
+
+    .tech-tag,
+    .skill-tag {
+        border-width: 2px;
+    }
+}
+
+/* Loading animation for images when added */
+.loading-shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Tooltip styles for achievements */
+.achievement-tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--steam-darker);
+    color: var(--steam-text);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievement:hover .achievement-tooltip {
+    opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--steam-darkest);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--steam-grey);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--steam-blue);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--steam-grey) var(--steam-darkest);
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--steam-blue);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Better link styles */
+a {
+    color: var(--steam-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--steam-blue-hover);
+}
+
+/* Selection color */
+::selection {
+    background: var(--steam-blue);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--steam-blue);
+    color: white;
+}
+
+/* Smooth fade in for page load */
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body {
+    animation: page-fade-in 0.5s ease;
+}
+
+/* Better button hover effects */
 .steam-btn,
 .project-link,
-.back-btn {
+.social-link {
     position: relative;
     overflow: hidden;
 }
 
-/* Additional Responsive Styles */
-@media (max-width: 768px) {
-    .project-filters {
-        flex-wrap: wrap;
+/* Gradient background for better visual hierarchy */
+#home {
+    background: linear-gradient(180deg, 
+        rgba(102, 192, 244, 0.05) 0%, 
+        rgba(22, 32, 45, 0) 100%
+    );
+}
+
+#experience {
+    background: linear-gradient(180deg, 
+        rgba(164, 208, 7, 0.03) 0%, 
+        rgba(22, 32, 45, 0) 100%
+    );
+}
+
+#projects {
+    background: linear-gradient(180deg, 
+        rgba(102, 192, 244, 0.03) 0%, 
+        rgba(22, 32, 45, 0) 100%
+    );
+}
+
+#skills {
+    background: linear-gradient(180deg, 
+        rgba(76, 158, 0, 0.03) 0%, 
+        rgba(22, 32, 45, 0) 100%
+    );
+}
+
+#connect {
+    background: linear-gradient(180deg, 
+        rgba(179, 102, 255, 0.03) 0%, 
+        rgba(22, 32, 45, 0) 100%
+    );
+}
+
+/* Section divider effect */
+.section-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(102, 192, 244, 0.3) 50%,
+        transparent 100%
+    );
+}
+
+/* Enhance project card badges */
+.project-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+.project-badge.new {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: white;
+    animation: badge-glow 2s ease-in-out infinite;
+}
+
+.project-badge.featured {
+    background: linear-gradient(135deg, var(--steam-green), var(--steam-green-light));
+    color: white;
+}
+
+@keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 5px currentColor; }
+    50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+}
+
+/* Improved tablet layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 700px;
     }
-    
-    .filter-tag {
-        padding: 6px 12px;
-        font-size: 10px;
+
+    .floating-nav {
+        left: 15px;
     }
-    
-    .project-badge {
-        padding: 2px 6px;
-        font-size: 9px;
+
+    body {
+        padding-left: 90px;
     }
-    
-    .project-stats {
-        font-size: 10px;
-        gap: 10px;
+}
+
+/* Extra large screens */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

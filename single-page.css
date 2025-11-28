@@ -1,0 +1,257 @@
+/* Additional styles for single-page layout */
+
+/* Override body for single page */
+body.single-page {
+    display: block;
+    padding: 0;
+    padding-top: 70px;
+}
+
+.page-wrapper {
+    width: 100%;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.home-section {
+    min-height: 100vh;
+}
+
+.experience-section,
+.projects-section,
+.connect-section {
+    min-height: auto;
+    padding: 80px 20px;
+}
+
+/* Adjust container width for different sections */
+.experience-section .container,
+.projects-section .container,
+.connect-section .container {
+    max-width: 900px;
+}
+
+.home-section .container {
+    max-width: 500px;
+}
+
+/* Fixed Navigation */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(22, 32, 45, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 20px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.nav-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--steam-blue);
+    text-shadow: 0 0 10px var(--steam-blue);
+    animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--steam-text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--steam-blue);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--steam-blue);
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--steam-text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--steam-text);
+    margin-bottom: 10px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px var(--steam-blue);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: var(--steam-text-dim);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scroll-arrow {
+    font-size: 24px;
+    color: var(--steam-blue);
+    animation: arrow-bounce 2s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better spacing for section headers */
+.experience-section .page-header,
+.projects-section .page-header,
+.connect-section .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Grid layout for projects in single page */
+@media (min-width: 768px) {
+    .projects-section .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .fixed-nav {
+        flex-wrap: wrap;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(22, 32, 45, 0.98);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        width: 100%;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    .section {
+        min-height: auto;
+        padding: 60px 15px;
+    }
+    
+    .home-section {
+        min-height: 100vh;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    body.single-page {
+        padding-top: 70px;
+    }
+    
+    .experience-section .container,
+    .projects-section .container,
+    .connect-section .container {
+        max-width: 100%;
+    }
+}

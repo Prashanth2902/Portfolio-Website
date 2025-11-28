@@ -43,8 +43,37 @@
         <div class="particle"></div>
     </div>
 
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="nav-link active" aria-label="Navigate to home section">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#experience" class="nav-link" aria-label="Navigate to work experience section">
+            <span class="nav-icon">💼</span>
+            <span class="nav-label">Experience</span>
+        </a>
+        <a href="#education" class="nav-link" aria-label="Navigate to education section">
+            <span class="nav-icon">🎓</span>
+            <span class="nav-label">Education</span>
+        </a>
+        <a href="#projects" class="nav-link" aria-label="Navigate to projects section">
+            <span class="nav-icon">🚀</span>
+            <span class="nav-label">Projects</span>
+        </a>
+        <a href="#skills" class="nav-link" aria-label="Navigate to skills section">
+            <span class="nav-icon">💻</span>
+            <span class="nav-label">Skills</span>
+        </a>
+        <a href="#connect" class="nav-link" aria-label="Navigate to connect section">
+            <span class="nav-icon">🔗</span>
+            <span class="nav-label">Connect</span>
+        </a>
+    </nav>
+
     <div class="container">
-        <main class="steam-card" role="main">
+        <!-- HOME SECTION -->
+        <section id="home" class="steam-card section-card" role="main">
             <!-- Steam-like status indicator -->
             <div class="status-bar" role="status" aria-label="Employment status">
                 <span class="status-dot online" role="img" aria-label="Available for work"></span>
@@ -77,7 +106,7 @@
             </p>
             
             <!-- Animated Stats -->
-            <section class="stats" aria-label="Professional statistics">
+            <div class="stats" aria-label="Professional statistics">
                 <div class="stat-item">
                     <div class="stat-icon" role="img" aria-label="Lightning icon">⚡</div>
                     <span class="stat-number counter" data-target="3" aria-label="3 years experience">0</span>
@@ -102,10 +131,10 @@
                         <div class="stat-fill" style="width: 85%"></div>
                     </div>
                 </div>
-            </section>
+            </div>
             
             <!-- Achievements Section -->
-            <section class="achievements" aria-label="Professional achievements">
+            <div class="achievements" aria-label="Professional achievements">
                 <button class="achievement unlocked" title="Software Developer" aria-label="Achievement: Software Developer">
                     <span role="img" aria-hidden="true">🤖</span>
                 </button>
@@ -121,44 +150,452 @@
                 <button class="achievement unlocked" title="MS Student" aria-label="Achievement: Master's Student">
                     <span role="img" aria-hidden="true">🎓</span>
                 </button>
-            </section>
-            
-            <!-- Steam-style Buttons -->
-            <nav class="buttons" aria-label="Main navigation">
-                <a href="experience.html" class="btn btn-primary steam-btn" aria-label="View professional experience - 3 plus years">
-                    <span class="btn-shine" aria-hidden="true"></span>
-                    <span class="btn-icon" role="img" aria-hidden="true">💼</span>
-                    <span class="btn-text">Experience</span>
-                    <span class="btn-badge" aria-label="3 plus years">3+</span>
-                </a>
-                <a href="projects.html" class="btn btn-secondary steam-btn" aria-label="View projects - new content available">
-                    <span class="btn-shine" aria-hidden="true"></span>
-                    <span class="btn-icon" role="img" aria-hidden="true">🚀</span>
-                    <span class="btn-text">Projects</span>
-                    <span class="btn-badge" aria-label="New content">NEW</span>
-                </a>
-            </nav>
+            </div>
 
             <!-- Resume Download Button -->
-            <nav class="buttons" style="margin-top: 15px;" aria-label="Resume download">
+            <div class="buttons" aria-label="Resume download">
                 <a href="https://drive.google.com/uc?export=download&id=1THuOYgeP8Kt6ZxRc21vCkgPWNvlXniCh" class="btn btn-resume steam-btn" aria-label="Download resume PDF">
                     <span class="btn-shine" aria-hidden="true"></span>
                     <span class="btn-icon" role="img" aria-hidden="true">📄</span>
                     <span class="btn-text">Download Resume</span>
                     <span class="btn-badge" aria-label="PDF document">PDF</span>
                 </a>
-            </nav>
+            </div>
+        </section>
 
-            <!-- Additional Navigation -->
-            <nav class="buttons" style="margin-top: 15px;" aria-label="Secondary navigation">
-                <a href="social.html" class="btn btn-secondary steam-btn" aria-label="Connect on social platforms - 5 plus networks">
-                    <span class="btn-shine" aria-hidden="true"></span>
-                    <span class="btn-icon" role="img" aria-hidden="true">🔗</span>
-                    <span class="btn-text">Connect</span>
-                    <span class="btn-badge" aria-label="5 plus social networks">5+</span>
+        <!-- WORK EXPERIENCE SECTION -->
+        <section id="experience" class="steam-card section-card">
+            <div class="section-header">
+                <h2 class="section-title glitch" data-text="Work Experience">Work Experience</h2>
+                <p class="section-subtitle">Building the future of mobility & technology</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Ola Electric SDE 2 -->
+                <div class="project-card" data-category="current">
+                    <div class="project-header">
+                        <span class="project-icon">🛵</span>
+                        <div>
+                            <h3 class="project-title">Software Development Engineer 2</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ola Electric</span>
+                                <span class="tech-tag">Bengaluru</span>
+                                <span class="tech-tag">October 2024 - June 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">📱 500K+ Scooters</span>
+                        <span class="stat">📈 18% Engagement</span>
+                        <span class="stat">🎖️ Promoted</span>
+                    </div>
+                    <p class="project-description">
+                        • Led development of Cricket & Weather Widgets for MoveOS 5, deployed to 500K+ scooters<br>
+                        • Optimized HMI app memory usage by 50%, cutting ANR rate by ~20%<br>
+                        • Built localization framework supporting 8 languages, reducing integration time by ~40%<br>
+                        • Collaborated with design, backend, and QA teams to deliver production-grade features<br>
+                        • Promoted for technical leadership and delivery excellence across AOSP subsystem
+                    </p>
+                </div>
+                
+                <!-- Ola Electric SDE 1 -->
+                <div class="project-card" data-category="previous">
+                    <div class="project-header">
+                        <span class="project-icon">🔧</span>
+                        <div>
+                            <h3 class="project-title">Software Development Engineer 1</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ola Electric</span>
+                                <span class="tech-tag">Bengaluru</span>
+                                <span class="tech-tag">June 2022 - Sept 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">⚡ Real-time Systems</span>
+                        <span class="stat">📉 35% Faster</span>
+                        <span class="stat">🔄 Telematics</span>
+                    </div>
+                    <p class="project-description">
+                        • Developed core telematics and AOSP services powering the Ola S1 scooter fleet<br>
+                        • Designed software modules for S1X+ Manufacturing System, reducing assembly time by >35%<br>
+                        • Initiated proof-of-concept prototypes cutting feature validation cycles by >15%<br>
+                        • Built real-time telemetry data pipelines for vehicle diagnostics and performance monitoring<br>
+                        • Implemented data collection modules to track battery health, GPS, and ride analytics
+                    </p>
+                </div>
+                
+                <!-- Ford Internship -->
+                <div class="project-card" data-category="internship">
+                    <div class="project-header">
+                        <span class="project-icon">🚗</span>
+                        <div>
+                            <h3 class="project-title">Summer Intern</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ford Motor</span>
+                                <span class="tech-tag">Chennai</span>
+                                <span class="tech-tag">May 2021 - July 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">📊 CRM Systems</span>
+                        <span class="stat">🗄️ SQL Server</span>
+                        <span class="stat">✅ Data Integrity</span>
+                    </div>
+                    <p class="project-description">
+                        • Worked on CRM systems using Microsoft Dynamics 365 for lead management<br>
+                        • Utilized Microsoft SQL Server Management Studio (SSMS) for database operations<br>
+                        • Ensured data consistency and integrity during migration processes<br>
+                        • Identified and resolved data discrepancies in integration workflows<br>
+                        • Gained enterprise software experience in automotive industry
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="steam-card section-card">
+            <div class="section-header">
+                <h2 class="section-title glitch" data-text="Education">Education</h2>
+                <p class="section-subtitle">Academic journey & qualifications</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Education - Northeastern -->
+                <div class="project-card" data-category="education">
+                    <div class="project-badge featured">CURRENT</div>
+                    <div class="project-header">
+                        <span class="project-icon">🎓</span>
+                        <div>
+                            <h3 class="project-title">Master of Science - Computer Science</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Northeastern University</span>
+                                <span class="tech-tag">Boston, MA</span>
+                                <span class="tech-tag">Sept 2025 - Present</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">🏛️ Top University</span>
+                        <span class="stat">📚 Advanced CS</span>
+                        <span class="stat">🌟 In Progress</span>
+                    </div>
+                    <p class="project-description">
+                        Currently pursuing Master's degree with focus on distributed systems, cloud computing, 
+                        and large-scale software solutions. Coursework includes Advanced Algorithms, 
+                        Distributed Systems, Machine Learning, and Software Engineering practices.
+                    </p>
+                </div>
+                
+                <!-- Education - NIT Trichy -->
+                <div class="project-card" data-category="education">
+                    <div class="project-header">
+                        <span class="project-icon">🏫</span>
+                        <div>
+                            <h3 class="project-title">Bachelor of Technology - Computer Science</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">NIT Trichy</span>
+                                <span class="tech-tag">Tamil Nadu</span>
+                                <span class="tech-tag">2018 - 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">🏆 Premier Institute</span>
+                        <span class="stat">💡 CS Fundamentals</span>
+                        <span class="stat">✅ Graduated</span>
+                    </div>
+                    <p class="project-description">
+                        Completed Bachelor's degree from National Institute of Technology, Tiruchirappalli.
+                        Strong foundation in algorithms, data structures, system design, and software development.
+                        Thesis project on Wireless Sensor Networks optimization.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="steam-card section-card">
+            <div class="section-header">
+                <h2 class="section-title glitch" data-text="Projects">Projects</h2>
+                <p class="section-subtitle">Innovative solutions and academic research</p>
+            </div>
+
+            <!-- Filter Tags -->
+            <div class="project-filters" role="navigation" aria-label="Project category filters">
+                <button class="filter-tag active" data-filter="all" aria-pressed="true">ALL</button>
+                <button class="filter-tag" data-filter="aiml" aria-pressed="false">AI/ML</button>
+                <button class="filter-tag" data-filter="mobile" aria-pressed="false">MOBILE</button>
+                <button class="filter-tag" data-filter="research" aria-pressed="false">RESEARCH</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Healthcare Chatbot -->
+                <article class="project-card" data-category="aiml">
+                    <div class="project-header">
+                        <span class="project-icon">🏥</span>
+                        <div>
+                            <h3 class="project-title">Healthcare Chatbot System</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Keras</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">🤖 AI Assistant</span>
+                        <span class="stat">💬 Natural Language</span>
+                        <span class="stat">⚡ Real-time</span>
+                    </div>
+                    <p class="project-description">
+                        Developed an intelligent chatbot application for hospitals/clinics using deep learning. 
+                        Implemented natural language processing for patient queries, appointment scheduling, 
+                        and symptom analysis. Trained on medical datasets with 92% accuracy in intent classification. 
+                        Features include multi-turn conversations, context retention, and medical term recognition.
+                    </p>
+                </article>
+                
+                <!-- House Price Prediction -->
+                <article class="project-card" data-category="aiml">
+                    <div class="project-header">
+                        <span class="project-icon">🏠</span>
+                        <div>
+                            <h3 class="project-title">House Price Prediction using ML</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">Regression</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">📊 ML Model</span>
+                        <span class="stat">🎯 Price Prediction</span>
+                        <span class="stat">📈 Data Analysis</span>
+                    </div>
+                    <p class="project-description">
+                        Built a machine learning model to predict house prices using regression techniques. 
+                        Performed extensive data preprocessing, feature engineering, and exploratory data analysis 
+                        to identify key factors affecting property values. Implemented multiple regression algorithms 
+                        and compared their performance to select the best model.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/Prashanth2902/Simple-ML-Projects/tree/main/House-Price-Prediction-ML" target="_blank" rel="noopener noreferrer" class="project-link">VIEW CODE</a>
+                    </div>
+                </article>
+                
+                <!-- ToDo App -->
+                <article class="project-card" data-category="mobile">
+                    <div class="project-header">
+                        <span class="project-icon">📝</span>
+                        <div>
+                            <h3 class="project-title">ToDo Task Manager App</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Room DB</span>
+                                <span class="tech-tag">MVVM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">📱 Native Android</span>
+                        <span class="stat">🔄 Sync</span>
+                        <span class="stat">🎨 Material UI</span>
+                    </div>
+                    <p class="project-description">
+                        Built a feature-rich ToDo application with Android Jetpack components. Implemented 
+                        Room database for offline storage, LiveData for reactive UI, and ViewModel for 
+                        lifecycle management. Features include task categorization, priority levels, 
+                        due date reminders, dark mode support, and swipe gestures.
+                    </p>
+                </article>
+                
+                <!-- B.Tech Thesis -->
+                <article class="project-card" data-category="research">
+                    <div class="project-header">
+                        <span class="project-icon">📡</span>
+                        <div>
+                            <h3 class="project-title">2-Level Cluster Optimization for WSN</h3>
+                            <div class="project-tech">
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">Optimization</span>
+                                <span class="tech-tag">Research</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-stats">
+                        <span class="stat">🔬 B.Tech Thesis</span>
+                        <span class="stat">📈 20% Improvement</span>
+                        <span class="stat">🏆 NIT Trichy</span>
+                    </div>
+                    <p class="project-description">
+                        Developed a modified GSA-RPI algorithm with hierarchical clustering and meta-heuristic 
+                        optimization for Mobile Sink Sensor Networks. Extended network lifetime by ~20% through 
+                        efficient load balancing and energy-aware data collection. Implemented two-level clustering 
+                        to minimize energy consumption and maximize coverage.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="steam-card section-card">
+            <div class="section-header">
+                <h2 class="section-title glitch" data-text="Skills">Technical Skills</h2>
+                <p class="section-subtitle">Tech stack & expertise</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">💬</span>
+                        <h3>Languages</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">📱</span>
+                        <h3>Mobile & Android Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android</span>
+                        <span class="skill-tag">Jetpack</span>
+                        <span class="skill-tag">Room</span>
+                        <span class="skill-tag">Retrofit</span>
+                        <span class="skill-tag">OkHttp</span>
+                        <span class="skill-tag">Hilt/Dagger</span>
+                        <span class="skill-tag">Coroutines</span>
+                        <span class="skill-tag">Protobuf</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">⚛️</span>
+                        <h3>Frameworks & Backend</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">gRPC</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">🤖</span>
+                        <h3>Data Science & ML</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">🛠️</span>
+                        <h3>Tools & Platforms</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">IntelliJ IDEA</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Gradle</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="skill-icon">⚡</span>
+                        <h3>Performance & Profiling</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android Profiler</span>
+                        <span class="skill-tag">Perfetto</span>
+                        <span class="skill-tag">Eclipse MAT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONNECT SECTION -->
+        <section id="connect" class="steam-card section-card">
+            <div class="section-header">
+                <h2 class="section-title glitch" data-text="Connect">Let's Connect</h2>
+                <p class="section-subtitle">Let's build something amazing together</p>
+            </div>
+            
+            <div class="social-grid">
+                <a href="mailto:cbeprashanth@gmail.com" class="social-link">
+                    <span class="social-icon">📧</span>
+                    <div class="social-info">
+                        <span class="social-name">Email</span>
+                        <span class="social-username">cbeprashanth@gmail.com</span>
+                    </div>
+                    <span class="steam-arrow">→</span>
                 </a>
-            </nav>
-        </main>
+                
+                <a href="tel:+18573515600" class="social-link">
+                    <span class="social-icon">📱</span>
+                    <div class="social-info">
+                        <span class="social-name">Phone</span>
+                        <span class="social-username">+1 (857) 351-5600</span>
+                    </div>
+                    <span class="steam-arrow">→</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/ppprashanth" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span class="social-icon">💼</span>
+                    <div class="social-info">
+                        <span class="social-name">LinkedIn</span>
+                        <span class="social-username">Prashanth Prabhakar</span>
+                    </div>
+                    <span class="steam-arrow">→</span>
+                </a>
+                
+                <a href="https://github.com/Prashanth2902" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <span class="social-icon">🐙</span>
+                    <div class="social-info">
+                        <span class="social-name">GitHub</span>
+                        <span class="social-username">View My Code</span>
+                    </div>
+                    <span class="steam-arrow">→</span>
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="steam-logo">⚙️</div>
+                <p>Currently in Boston, MA | Open to opportunities!</p>
+                <p style="font-size: 10px; margin-top: 10px; opacity: 0.5;">Press ↑ ↑ ↓ ↓ ← → ← → B A for a surprise!</p>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>

@@ -1,4 +1,4 @@
-// Steam Portfolio JavaScript - Game-like animations and interactions
+// Steam Portfolio JavaScript - Single Page Version with Separated Sections
 
 // Performance-optimized IntersectionObserver for animations
 const observerOptions = {
@@ -10,20 +10,58 @@ const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
-            // Optionally unobserve after animation to improve performance
             animationObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
+// Navigation active state observer
+const navObserverOptions = {
+    threshold: 0.5,
+    rootMargin: '-50% 0px -50% 0px'
+};
+
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to corresponding nav link
+            const id = entry.target.getAttribute('id');
+            const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, navObserverOptions);
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Observe elements for scroll-based animations
-    const observableElements = document.querySelectorAll('.project-card, .social-link, .stat-item');
-    observableElements.forEach(el => {
-        el.classList.add('observe-animate');
-        animationObserver.observe(el);
+    // Observe sections for navigation highlighting
+    const sections = document.querySelectorAll('.section-card');
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
     
     // Counter Animation for Stats
@@ -31,43 +69,53 @@ document.addEventListener('DOMContentLoaded', function() {
     if (counters.length > 0) {
         const speed = 200;
         
-        counters.forEach(counter => {
-            const animate = () => {
-                const value = +counter.getAttribute('data-target');
-                const data = +counter.innerText;
-                const time = value / speed;
-                
-                if(data < value) {
-                    counter.innerText = Math.ceil(data + time);
-                    setTimeout(animate, 10);
-                } else {
-                    // Handle different types of counters
-                    if (counter.parentElement.querySelector('.stat-label').textContent.includes('K+')) {
-                        counter.innerText = value + 'K+';
-                    } else if (counter.parentElement.querySelector('.stat-label').textContent.includes('%')) {
-                        counter.innerText = value + '%';
-                    } else {
-                        counter.innerText = value + '+';
+        // Create an observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const animate = () => {
+                        const value = +counter.getAttribute('data-target');
+                        const data = +counter.innerText;
+                        const time = value / speed;
+                        
+                        if(data < value) {
+                            counter.innerText = Math.ceil(data + time);
+                            setTimeout(animate, 10);
+                        } else {
+                            if (counter.parentElement.querySelector('.stat-label').textContent.includes('K+')) {
+                                counter.innerText = value + 'K+';
+                            } else if (counter.parentElement.querySelector('.stat-label').textContent.includes('%')) {
+                                counter.innerText = value + '%';
+                            } else {
+                                counter.innerText = value + '+';
+                            }
+                        }
                     }
+                    
+                    setTimeout(animate, 500);
+                    counterObserver.unobserve(counter);
                 }
-            }
-            
-            setTimeout(animate, 500);
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
         });
     }
 
-    // Glitch effect on name hover (Home page)
-    const glitchName = document.querySelector('.name.glitch');
-    if (glitchName) {
-        glitchName.addEventListener('mouseenter', function() {
+    // Glitch effect on name and section titles
+    const glitchElements = document.querySelectorAll('.glitch');
+    glitchElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
             this.classList.add('glitch-active');
             setTimeout(() => {
                 this.classList.remove('glitch-active');
             }, 500);
         });
-    }
+    });
 
-    // Achievement hover animations (Home page)
+    // Achievement hover animations
     const achievements = document.querySelectorAll('.achievement');
     achievements.forEach(ach => {
         ach.addEventListener('mouseenter', function() {
@@ -80,74 +128,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Social links are now handled by IntersectionObserver for better performance
+    // Project filters
+    const filters = document.querySelectorAll('.filter-tag');
+    const projects = document.querySelectorAll('#projects .project-card');
 
-    // Glitch effect on all page titles
-    const pageTitles = document.querySelectorAll('.page-title.glitch');
-    pageTitles.forEach(title => {
-        title.addEventListener('mouseenter', function() {
-            this.classList.add('glitch-active');
-            setTimeout(() => {
-                this.classList.remove('glitch-active');
-            }, 500);
+    filters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            // Update active filter
+            filters.forEach(f => f.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Animate filter change
+            projects.forEach(project => {
+                project.style.transform = 'scale(0.9)';
+                project.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    // Filter logic
+                    if (filterValue === 'all') {
+                        project.style.display = 'block';
+                    } else {
+                        const category = project.getAttribute('data-category');
+                        const normalizedCategory = category ? category.toLowerCase().replace(/[\s\/]/g, '') : '';
+                        const normalizedFilter = filterValue.toLowerCase().replace(/[\s\/]/g, '');
+                        
+                        if (normalizedCategory.includes(normalizedFilter)) {
+                            project.style.display = 'block';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    }
+                    
+                    project.style.transform = 'scale(1)';
+                    project.style.opacity = '1';
+                }, 300);
+            });
         });
     });
 
-    // Project filters (Projects and Experience pages)
-    if (window.location.pathname.includes('projects.html') || window.location.pathname.includes('experience.html')) {
-        const filters = document.querySelectorAll('.filter-tag');
-        const projects = document.querySelectorAll('.project-card');
-
-        filters.forEach(filter => {
-            filter.addEventListener('click', function() {
-                // Update active filter
-                filters.forEach(f => f.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filterValue = this.textContent.toLowerCase().replace('/', '');
-                
-                // Animate filter change
-                projects.forEach(project => {
-                    project.style.transform = 'scale(0.9)';
-                    project.style.opacity = '0.5';
-                    
-                    setTimeout(() => {
-                        // Filter logic
-                        if (filterValue === 'all') {
-                            project.style.display = 'block';
-                        } else {
-                            const category = project.getAttribute('data-category');
-                            // Handle AI/ML and other special categories
-                            const normalizedCategory = category ? category.toLowerCase().replace(/[\s\/]/g, '') : '';
-                            const normalizedFilter = filterValue.replace(/[\s\/]/g, '');
-                            
-                            if (normalizedCategory.includes(normalizedFilter)) {
-                                project.style.display = 'block';
-                            } else {
-                                project.style.display = 'none';
-                            }
-                        }
-                        
-                        project.style.transform = 'scale(1)';
-                        project.style.opacity = '1';
-                    }, 300);
-                });
-            });
+    // Project card hover effects
+    const allProjectCards = document.querySelectorAll('.project-card');
+    allProjectCards.forEach(project => {
+        project.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.project-icon');
+            if (icon) {
+                icon.style.animation = 'icon-bounce 0.5s ease';
+                setTimeout(() => {
+                    icon.style.animation = 'project-icon-glow 2s ease-in-out infinite';
+                }, 500);
+            }
         });
-
-        // Project card hover effects
-        projects.forEach(project => {
-            project.addEventListener('mouseenter', function() {
-                const icon = this.querySelector('.project-icon');
-                if (icon) {
-                    icon.style.animation = 'icon-bounce 0.5s ease';
-                    setTimeout(() => {
-                        icon.style.animation = 'project-icon-glow 2s ease-in-out infinite';
-                    }, 500);
-                }
-            });
-        });
-    }
+    });
 
     // Add parallax effect to particles with throttling for better performance
     let ticking = false;
@@ -167,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add sound effect simulation on button clicks (visual feedback)
-    const buttons = document.querySelectorAll('.steam-btn, .project-link, .back-btn');
+    const buttons = document.querySelectorAll('.steam-btn, .project-link');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
             // Create ripple effect
@@ -188,25 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 ripple.remove();
             }, 600);
-        });
-    });
-
-    // Loading animation for page transitions
-    const pageLinks = document.querySelectorAll('a[href*=".html"]');
-    pageLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (!e.ctrlKey && !e.metaKey) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-                
-                // Add fade out effect
-                document.body.style.opacity = '0';
-                document.body.style.transition = 'opacity 0.3s ease';
-                
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 300);
-            }
         });
     });
 
@@ -245,21 +259,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Smooth scroll for any anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // Reveal animations on scroll
+    const revealElements = document.querySelectorAll('.project-card, .skill-category, .social-link');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                revealObserver.unobserve(entry.target);
             }
         });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        revealObserver.observe(el);
     });
 
-    // Add typing effect to bio (optional)
+    // Add typing effect to bio (only on first visit to home section)
     const bio = document.querySelector('.bio');
     if (bio && !sessionStorage.getItem('bioAnimated')) {
         const text = bio.textContent;
@@ -278,32 +299,42 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 1000);
         sessionStorage.setItem('bioAnimated', 'true');
     }
-});
 
-// Fix scrolling for long content pages
-if (document.body.classList.contains('has-long-content')) {
-    // Ensure page is scrollable
-    document.documentElement.style.scrollBehavior = 'smooth';
-    document.body.style.height = 'auto';
-    document.body.style.overflowY = 'auto';
-    
-    // Reset any conflicting styles
-    const container = document.querySelector('.container');
-    if (container) {
-        container.style.height = 'auto';
-        container.style.overflow = 'visible';
-    }
-    
-    const steamCard = document.querySelector('.steam-card');
-    if (steamCard) {
-        steamCard.style.height = 'auto';
-        steamCard.style.maxHeight = 'none';
-        steamCard.style.overflow = 'visible';
-    }
-}
+    // Keyboard navigation for sections
+    document.addEventListener('keydown', function(e) {
+        // Ignore if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        const sections = ['home', 'experience', 'education', 'projects', 'skills', 'connect'];
+        const currentActive = document.querySelector('.nav-link.active');
+        
+        if (!currentActive) return;
+        
+        const currentHref = currentActive.getAttribute('href').substring(1);
+        const currentIndex = sections.indexOf(currentHref);
+        
+        if (e.key === 'ArrowDown' && currentIndex < sections.length - 1) {
+            e.preventDefault();
+            const nextSection = document.getElementById(sections[currentIndex + 1]);
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+            e.preventDefault();
+            const prevSection = document.getElementById(sections[currentIndex - 1]);
+            if (prevSection) {
+                prevSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+});
 
 // Console Easter Egg
 console.log('%c🎮 Welcome to the Steam Portfolio! 🎮', 
     'font-size: 20px; font-weight: bold; color: #66c0f4; text-shadow: 0 0 10px #66c0f4;');
 console.log('%cPress ↑ ↑ ↓ ↓ ← → ← → B A for a surprise!', 
     'font-size: 12px; color: #a4d007;');
+console.log('%cUse ↑ and ↓ arrow keys to navigate between sections', 
+    'font-size: 11px; color: #8f98a0;');
