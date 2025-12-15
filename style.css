@@ -27,6 +27,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-y: scroll; /* Always show scrollbar */
 }
 
 body {
@@ -106,6 +107,28 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    max-height: 90vh; /* Limit height to viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar for floating nav */
+.floating-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.floating-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+.floating-nav::-webkit-scrollbar-thumb {
+    background: var(--steam-blue);
+    border-radius: 2px;
+}
+
+.floating-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--steam-blue-hover);
 }
 
 .nav-link {

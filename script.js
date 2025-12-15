@@ -15,38 +15,45 @@ const animationObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Navigation active state observer
-const navObserverOptions = {
-    threshold: 0.5,
-    rootMargin: '-50% 0px -50% 0px'
-};
-
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Remove active class from all nav links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
+// Navigation active state observer - More reliable approach
+let scrollTimeout;
+function updateNavOnScroll() {
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+    }
+    
+    scrollTimeout = window.requestAnimationFrame(() => {
+        const sections = document.querySelectorAll('.section-card');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let currentSection = 'home'; // default
+        const scrollPos = window.scrollY + window.innerHeight / 3; // Check at 1/3 from top
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
             
-            // Add active class to corresponding nav link
-            const id = entry.target.getAttribute('id');
-            const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                currentSection = section.getAttribute('id');
             }
-        }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
     });
-}, navObserverOptions);
+}
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Observe sections for navigation highlighting
-    const sections = document.querySelectorAll('.section-card');
-    sections.forEach(section => {
-        navObserver.observe(section);
-    });
+    // Set up scroll spy for navigation
+    window.addEventListener('scroll', updateNavOnScroll);
+    updateNavOnScroll(); // Run once on load
     
     // Smooth scroll for navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
